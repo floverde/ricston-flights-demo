@@ -10,6 +10,12 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# NetBeans Profiles
+nbactions-release-profile.xml
+
+# Target directory
+target/
+
 # Package Files #
 *.jar
 *.war

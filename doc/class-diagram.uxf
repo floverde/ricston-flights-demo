@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>28</x>
+      <y>14</y>
+      <w>987</w>
+      <h>868</h>
+    </coordinates>
+    <panel_attributes>bg=#eeeeee
+symbol=artifact
+transparency=0
+layer=0
+&lt;&lt;artifact&gt;&gt;
+*ricston-flights-demo*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>49</x>
+      <y>686</y>
+      <w>903</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>layer=1
+bg=#99ff99
+transparency=0
+transparency=0
+DB</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>35</x>
+      <y>49</y>
+      <w>973</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>layer=1
+bg=#6666ff
+transparency=0
+REST Controller</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>49</x>
+      <y>77</y>
+      <w>525</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>layer=2
+transparency=0
+&lt;&lt;REST controller&gt;&gt;
+*FlightController*
+--
+-service: FlightService
+--
++search(params: SearchFlightDTO): FlightDTO[0..*] {GET}
++create(payload: CreateFlightDTO): FlightDTO {POST}
++purchaseTicket(flightCode: string, departureDate: LocalDateTime, payload: PurchaseTicketDTO): TicketDTO {POST}
++changePrice(flightCode: string, departureDate: LocalDateTime, payload: ChangePriceDTO): FlightDTO {PATCH}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>567</x>
+      <y>210</y>
+      <w>98</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>layer=1
+bg=#cccccc
+transparency=0
+Configuration</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>574</x>
+      <y>231</y>
+      <w>84</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>layer=2
+transparency=0
+*SwaggerConfig*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>812</x>
+      <y>210</y>
+      <w>182</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>layer=1
+bg=#cccccc
+transparency=0
+Exception</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>819</x>
+      <y>231</y>
+      <w>168</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>layer=2
+transparency=0
+*RestControllerExceptionHandler*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>175</y>
+      <w>21</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>567</x>
+      <y>161</y>
+      <w>406</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+lw=1.5
+layer=5
+/intercept errors/</panel_attributes>
+    <additional_attributes>470.0;90.0;470.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>49</x>
+      <y>287</y>
+      <w>336</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>layer=2
+transparency=3
+&lt;&lt;interface&gt;&gt;
+/*FlightService*/
+--
++search(params: SearchFlightDTO): FlightDTO[0..*]
++create(params: CreateFlightDTO): FlightDTO
++purchaseTicket(key: FlightKey, params: PurchaseTicketDTO): TicketDTO
++changePrice(key: FlightKey, delta: BigDecimal): FlightDTO</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>364</y>
+      <w>21</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>35</x>
+      <y>259</y>
+      <w>973</w>
+      <h>406</h>
+    </coordinates>
+    <panel_attributes>layer=1
+bg=yellow
+transparency=0
+transparency=0
+Service</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>49</x>
+      <y>455</y>
+      <w>336</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>layer=2
+transparency=3
+*FlightServiceImpl*
+--
+-mapper: FlightMapper
+-routeService: RouteService
+-ticketService: TicketService
+-flightRepository: FlightRepository
+-aircraftTypeRepository: AircraftTypeRepository
+--
++search(params: SearchFlightDTO): FlightDTO[0..*]
++create(params: CreateFlightDTO): FlightDTO
++purchaseTicket(key: FlightKey, params: PurchaseTicketDTO): TicketDTO
++changePrice(key: FlightKey, delta: BigDecimal): FlightDTO
+-findByKey(key: FlightKey): Flight[0..1]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>588</x>
+      <y>77</y>
+      <w>392</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>layer=2
+transparency=0
+&lt;&lt;REST controller&gt;&gt;
+*AirlineController*
+--
+-service: AirlineService
+--
++getDestinations(id: int, page: int): AirportSitePageDTO {GET}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>889</x>
+      <y>133</y>
+      <w>21</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>133</y>
+      <w>21</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>10.0;230.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>525</x>
+      <y>294</y>
+      <w>301</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>layer=2
+transparency=3
+&lt;&lt;interface&gt;&gt;
+/*AirlineService*/
+--
++getDestinations(airlineID: int, pageIndex: int): AirportSitePageDTO</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>413</x>
+      <y>371</y>
+      <w>301</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>layer=2
+transparency=3
+*AirlineServiceImpl*
+--
+-pageSize: int
+-pagingEnabled: boolean
+-airportMapper: AirportMapper
+-airlineRepository: AirlineRepository
+-airportRepository: AirportRepository
+--
++getDestinations(airlineID: int, pageIndex: int): AirportSitePageDTO
+-getPageBounds(pageIndex: int): Pageable</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>336</y>
+      <w>21</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>812</x>
+      <y>483</y>
+      <w>182</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>layer=2
+transparency=3
+&lt;&lt;interface&gt;&gt;
+/*RouteService*/
+--
++getByKey(key: RouteKey): Route[0..1]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>511</x>
+      <y>546</y>
+      <w>294</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>layer=2
+transparency=3
+&lt;&lt;interface&gt;&gt;
+/*TicketService*/
+--
++generate(flight: FlightDTO, passengers: string[1..*]): TicketDTO</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>378</x>
+      <y>560</y>
+      <w>147</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>378</x>
+      <y>497</y>
+      <w>448</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>620.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>511</x>
+      <y>616</y>
+      <w>294</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>layer=2
+transparency=3
+*TicketServiceStub*
+--
+--
++generate(flight: FlightDTO, passengers: string[1..*]): TicketDTO</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>658</x>
+      <y>588</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>812</x>
+      <y>553</y>
+      <w>189</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>layer=2
+transparency=3
+*RouteServiceImpl*
+--
+-repository: RouteRepository
+--
++getByKey(key: RouteKey): Route[0..1]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>896</x>
+      <y>525</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>406</x>
+      <y>826</y>
+      <w>539</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>layer=3
+transparency=0
+*RouteRepository*
+--
++findByRouteKey(airlineIataCode: string, departureAirportIataCode: string, destinationAirportIataCode: string): Route[0..1]
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>203</x>
+      <y>721</y>
+      <w>182</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>layer=3
+transparency=0
+*AircraftTypeRepository*
+--
++existsByModel(model: string): boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>518</x>
+      <y>721</y>
+      <w>161</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>layer=3
+transparency=0
+*AirlineRepository*
+--
++existsById(airlineID: int): boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>469</x>
+      <y>777</y>
+      <w>385</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>layer=3
+transparency=0
+*AirportRepository*
+--
++findDestinationAirportsByAirlineId(airlineID: int, pageable: Pageable): Page&lt;Airport&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>56</x>
+      <y>777</y>
+      <w>399</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>layer=3
+transparency=0
+*FlightRepository*
+--
++findAllByPkDepartureDateBetween(from: LocalDateTime, to: LocalDateTime): Flight[0..*]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>896</x>
+      <y>595</y>
+      <w>21</w>
+      <h>245</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>10.0;330.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>476</x>
+      <y>469</y>
+      <w>21</w>
+      <h>322</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>10.0;440.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>469</y>
+      <w>42</w>
+      <h>287</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>40.0;390.0;10.0;390.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>126</x>
+      <y>595</y>
+      <w>21</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>10.0;260.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>595</y>
+      <w>21</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+lw=1.5
+layer=5</panel_attributes>
+    <additional_attributes>10.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
