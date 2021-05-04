@@ -374,20 +374,20 @@ HTTP/1.1 201 CREATED
 
 ```json
 {
-	"code": "CU8NZOODUH",
-	"passengers": [
-  		"Mario"
-	],
-	"flight": {
-		"flight-code": "FR6524",
-		"departure-date": "2021-07-05T10:45:00",
-		"airline-name": "Ryanair",
-		"departure-airport": "BUD",
-		"destination-airport": "CRL",
-		"aircraft-type": "Boeing 737-800",
-		"seat-availability": 149,
-		"price": 65.25
-	}
+    "code": "CU8NZOODUH",
+    "passengers": [
+        "Mario"
+    ],
+    "flight": {
+        "flight-code": "FR6524",
+        "departure-date": "2021-07-05T10:45:00",
+        "airline-name": "Ryanair",
+        "departure-airport": "BUD",
+        "destination-airport": "CRL",
+        "aircraft-type": "Boeing 737-800",
+        "seat-availability": 149,
+        "price": 65.25
+    }
 }
 ```
 
