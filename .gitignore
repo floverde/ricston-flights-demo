@@ -13,6 +13,10 @@
 # NetBeans Profiles
 nbactions-release-profile.xml
 
+# NetBeans Files
+nbactions.tmp
+nbproject/
+
 # Target directory
 target/
 
