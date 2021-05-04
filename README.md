@@ -4,7 +4,10 @@ This is a demonstration project commissioned by Ricston Ltd.
 
 This project consists of a web service with a REST interface for flight management.
 
-[TOC]
+1. Requirements
+2. Database schema
+3. REST endpoints
+4. Class Diagram
 
 ### 1. Requirements
 Let's imagine that a company, Acme Travel, wants to launch its own mobile app that allows the following operations:
@@ -23,15 +26,15 @@ This company already has an internal infrastructure that it uses to manage fligh
 ### 2. Database schema
 Before going into the details of the web service, it is good to provide an overview of the application domain and the entities involved. Since this is a REST API for managing **flights**, they are certainly one of the main entities. A flight is identified by its *code* and *departure date*. Each flight follows a predetermined **route**, decided in advance by air traffic controllers, and cannot deviate from it. A route may be flown by zero or more flights (*zero-to-many* relation). A flight can only exist if there is a predetermined route, and if this fails all flights on that route will be cancelled (*membership* relation). This UML diagram summarises the above:
 
-![flight-route-relationship](https://github.com/floverde/ricston-flights-demo/blob/main/doc/flight-route-relationship.svg)
+![flight-route-relationship](https://github.com/floverde/ricston-flights-demo/blob/master/doc/flight-route-relationship.svg)
 
 Each route is defined (and identified) by the *departure* and *destination* **airports** and by the **airline** that plotted it. Again, both between airports and routes and between airlines and routes there is *zero-to-many membership* relationship. In fact, since the existence of a route depends both on the existence of the airline that traced it and on the existence of the airports it connects, the cancellation of one of these implies the cancellation of the route itself.
 
-![route-relationships](https://github.com/floverde/ricston-flights-demo/blob/main/doc/route-relationships.svg)
+![route-relationships](https://github.com/floverde/ricston-flights-demo/blob/master/doc/route-relationships.svg)
 
 These concepts are modelled by the tables that make up the database in this way:
 
-​											![acme-travel-db](https://github.com/floverde/ricston-flights-demo/blob/main/doc/acme-travel-db.svg)
+​											![acme-travel-db](https://github.com/floverde/ricston-flights-demo/blob/master/doc/acme-travel-db.svg)
 
 
 
@@ -507,6 +510,6 @@ As a brief introduction to the structure of the application, we provide below a 
 
 For simplicity's sake we excluded from the schema all data classes (Entity JPA, DTO, etc...), and other utility classes (mapper, error, converter, etc...), keeping only the classes belonging to the three layers in which the application is structured (*REST controller layer*, *service layer*, *repository layer*).
 
-![class-diagram](https://github.com/floverde/ricston-flights-demo/blob/main/doc/class-diagram.svg)
+![class-diagram](https://github.com/floverde/ricston-flights-demo/blob/master/doc/class-diagram.svg)
 
 _Author: Fabrizio Lo Verde_
